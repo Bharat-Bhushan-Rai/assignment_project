@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>customised Worklist</title>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+        <div style="width:40%;float: left;">
+            <div style="margin-left: 35%;margin-right: auto;">
+                <h1>Your Own list</h1>
+            </div>
+            <div >
+                <% for(let i=0;i<own_work.length;i++){%>
+                    <form action="/own/delshare" method="POST">
+                     <div style="width:100%;border-width: 1px;border-style:solid;border-color: blue;">
+                         <!-- <input type="checkbox"  name="checkbox" value="<%=own_work[i]._id %>" onChange="this.form.submit()"> -->
+                         <p><%=own_work[i].work%></p>
+                         <input type="hidden" name="email" value="<%= email %>"> </input>
+                         <input type="hidden" name="workname" value="<%= own_work[i].work %>"> </input>
+                         <input type="hidden" name="workid" value="<%= own_work[i]._id %>"></input>
+                         <input type="submit" name="action" value="Done"><br>
+                         <input type="submit" name="action" value="Share">
+                         <input type="email" name="receivermail" placeholder="Enter Receiver's mail to share this taks">
+                     </div>
+                 </form>
+                 <%}%>
+                 <form  action="/work/addAcceptDel" method="POST">
+                     <input type="text" name="workname" id="" placeholder="New Item" autocomplete="off">
+                     <input type="hidden" name="email" value="<%= email %>"> </input>
+                     <input type="submit" name="action" value="Add">
+                     
+                    </form>
+            </div>
+        </div>
+
+        <div style="width: 40%;float: right;">
+            <div style="margin-left: 42%;margin-right: auto;">
+
+                <h1>Reqests</h1>
+            </div>
+            <% for(let i=0;i<req_work.length;i++){%>
+            <form action="/work/addAcceptDel" method="POST">
+                <div style="width:100%;border-width: 1px;border-style:solid;border-color: blue;">
+
+                    <div >
+                            
+                        <p><%=req_work[i].work%></p>
+                        <input type="hidden" name="email" value="<%= email %>"> </input>
+                         <input type="hidden" name="req_workname" value="<%= req_work[i].work %>"> </input>
+                         <input type="hidden" name="req_workid" value="<%= req_work[i]._id %>"></input>
+                         <input type="submit" name="action" value="Accept">
+                         
+                         
+                     </div>
+                    </form>
+        
+                    <form action="/work/addAcceptDel" method="POST">
+                    <div >
+                            
+                        
+                        <input type="hidden" name="email" value="<%= email %>"> </input>
+                         
+                         <input type="hidden" name="req_workid" value="<%= req_work[i]._id %>"></input>
+                         <input type="submit" name="action" value="Del">
+                         
+                         
+                     </div>
+                </div>
+            </form>
+         <%}%>
+    </div>
+</body>
+</html>

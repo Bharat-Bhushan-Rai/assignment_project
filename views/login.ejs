@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In or Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="center">
+
+        <form action="login" method="post">
+            <div>
+                <label for="email">
+                    Email
+                </label><br>
+                <input type="email" name="email" id="email">
+            </div><br>
+            <div>
+    
+                <label for="password">
+                    Password
+                </label><br>
+                <input type="password" name="password" id="password">
+            </div><br>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+        </form>
+        <% if(flag===1){%>
+            <p color="red">Wrong Credentials , Try again</p>
+        <%}%>
+        <h5>Don't Have Account</h5>
+        <a href="/signup" style="text-decoration: none;">Signup</a>
+    </div>
+</body>
+</html>
